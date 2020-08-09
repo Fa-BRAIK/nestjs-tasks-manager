@@ -21,6 +21,10 @@ export class TasksService {
     return task
   }
 
+  delete(id: string): void {
+    this._tasks.filter(task => task.id !== id)
+  }
+
   task(id: string): ITask {
     return this._tasks.find(task => task.id === id)
   }
