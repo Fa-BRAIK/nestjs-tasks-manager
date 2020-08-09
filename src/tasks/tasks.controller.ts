@@ -21,7 +21,7 @@ export class TasksController {
   constructor(private tasksService: TasksService) {}
 
   @Get()
-  getTasks(@Query() filterDto: GetTasksFilterDto): ITask[] {
+  getTasks(@Query(ValidationPipe) filterDto: GetTasksFilterDto): ITask[] {
     if (Object.keys(filterDto).length > 0) {
       return this.tasksService.tasksFilter(filterDto)
     }
