@@ -10,6 +10,10 @@ export class TasksService {
     private readonly repository: TaskRepository,
   ) {}
 
+  public async findAll(): Promise<Task[]> {
+    return await this.repository.find()
+  }
+
   public async findOne(id: number): Promise<Task> {
     const found = await this.repository.findOne(id)
 
