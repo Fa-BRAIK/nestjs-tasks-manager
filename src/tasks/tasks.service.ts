@@ -37,4 +37,13 @@ export class TasksService {
       throw new NotFoundException(`Task with id : ${id} not found`)
     }
   }
+
+  public async update(id: number, status: TaskStatus): Promise<Task> {
+    const task = await this.findOne(id)
+
+    task.status = status
+    await task.save()
+
+    return task
+  }
 }
