@@ -22,12 +22,12 @@ export class TasksController {
   constructor(private tasksService: TasksService) {}
 
   @Get()
-  async findAll(): Promise<Task[]> {
+  public async findAll(): Promise<Task[]> {
     return this.tasksService.findAll()
   }
 
   @Get(':id')
-  async findOne(@Param('id', ParseIntPipe) id: number): Promise<Task> {
+  public async findOne(@Param('id', ParseIntPipe) id: number): Promise<Task> {
     return this.tasksService.findOne(id)
   }
 }
