@@ -31,12 +31,10 @@ export class TasksService {
   }
 
   public async delete(id: number): Promise<void> {
-    const found = await this.repository.findOne(id)
+    const result = await this.repository.delete(id)
 
-    if (!found) {
+    if (result.affected === 0) {
       throw new NotFoundException(`Task with id : ${id} not found`)
     }
-
-    await found.remove()
   }
 }
