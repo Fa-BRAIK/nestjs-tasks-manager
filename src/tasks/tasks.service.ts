@@ -29,4 +29,14 @@ export class TasksService {
   public async create(createTaskDto: CreateTaskDto): Promise<Task> {
     return this.repository.createTask(createTaskDto)
   }
+
+  public async delete(id: number): Promise<void> {
+    const found = await this.repository.findOne(id)
+
+    if (!found) {
+      throw new NotFoundException(`Task with id : ${id} not found`)
+    }
+
+    await found.remove()
+  }
 }

@@ -32,7 +32,13 @@ export class TasksController {
   }
 
   @Post('create')
+  @UsePipes(ValidationPipe)
   public async create(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
     return this.tasksService.create(createTaskDto)
+  }
+
+  @Delete('delete/:id')
+  public async delete(@Param('id', ParseIntPipe) id: number): Promise<void> {
+    return this.tasksService.delete(id)
   }
 }
