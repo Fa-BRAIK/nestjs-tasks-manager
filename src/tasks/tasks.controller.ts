@@ -30,4 +30,9 @@ export class TasksController {
   public async findOne(@Param('id', ParseIntPipe) id: number): Promise<Task> {
     return this.tasksService.findOne(id)
   }
+
+  @Post('create')
+  public async create(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksService.create(createTaskDto)
+  }
 }
