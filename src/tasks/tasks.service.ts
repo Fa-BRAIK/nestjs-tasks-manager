@@ -4,6 +4,7 @@ import { TaskRepository } from './task.repository'
 import { Task } from './task.entity'
 import { CreateTaskDto } from './dto/create-task.dto'
 import { TaskStatus } from './task-status.enum'
+import { GetTasksFilterDto } from './dto/get-tasks-filter.dto'
 
 @Injectable()
 export class TasksService {
@@ -12,7 +13,7 @@ export class TasksService {
     private readonly repository: TaskRepository,
   ) {}
 
-  public async findAll(): Promise<Task[]> {
+  public async find(filterDto: GetTasksFilterDto): Promise<Task[]> {
     return await this.repository.find()
   }
 
