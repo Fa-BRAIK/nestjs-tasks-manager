@@ -23,7 +23,7 @@ export class TasksController {
   constructor(private tasksService: TasksService) {}
 
   @Get()
-  public async find(@Param() filterDto: GetTasksFilterDto): Promise<Task[]> {
+  public async find(@Query() filterDto: GetTasksFilterDto): Promise<Task[]> {
     return this.tasksService.find(filterDto)
   }
 

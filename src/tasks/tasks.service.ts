@@ -14,7 +14,7 @@ export class TasksService {
   ) {}
 
   public async find(filterDto: GetTasksFilterDto): Promise<Task[]> {
-    return await this.repository.find()
+    return await this.repository.getTasks(filterDto)
   }
 
   public async findOne(id: number): Promise<Task> {
